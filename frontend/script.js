@@ -2,7 +2,7 @@
 // Detecta si estamos dentro de Docker (hostname 'notas_backend') o localhost
 const API_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:8000/api/notes'   // desde el navegador
-  : 'http://notas_backend:3000/api/notes'; // desde Docker
+  : 'http://52.200.208.182:8000/api/notes'; // desde Docker
 
 
 const titleInput = document.getElementById('title');
