@@ -12,7 +12,9 @@ app.use(cors());
 
 app.use(express.json());
 app.use('/api/notes', notesRoutes);
-
+app.get('/adrian', (req, res) => {
+  res.json({ nombre: 'Ángel Adrián Sanchez Garcia' });
+});
 app.get('/', (req, res) => {
   res.send('📝 API de Bloc de Notas funcionando');
 });

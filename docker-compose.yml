@@ -5,19 +5,19 @@ services:
     build:
       context: ./frontend
       args:
-        BACKEND_URL: "http://notas_backend:3000"
-    container_name: notas_frontend
+        BACKEND_URL: "http://adrian_backend:3000"
+    container_name: adrian_frontend
     ports:
       - "80:80"
     networks:
-      - notas_network
+      - adrian_network
     depends_on:
       - api
 
   api:
     build:
       context: ./backend
-    container_name: notas_backend
+    container_name: adrian_backend
     ports:
       - "8000:3000"
     environment:
@@ -27,14 +27,14 @@ services:
       DB_NAME: ${DB_NAME}
       API_PORT: ${API_PORT}
     networks:
-      - notas_network
+      - adrian_network
     depends_on:
       db:
         condition: service_healthy
 
   db:
     image: mysql:8.0
-    container_name: notas_db
+    container_name: adrian_db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
@@ -50,11 +50,11 @@ services:
       - mysql_data:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
     networks:
-      - notas_network
+      - adrian_network
 
 volumes:
   mysql_data:
 
 networks:
-  notas_network:
+  adrian_network:
     driver: bridge
